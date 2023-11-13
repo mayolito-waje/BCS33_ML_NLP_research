@@ -1,0 +1,8 @@
+cookies1.txt
+cookies2.txt
+cookies3.txt
+start_url.txt
+
+__pycache__
+.ipynb_checkpoints
+.vscode
