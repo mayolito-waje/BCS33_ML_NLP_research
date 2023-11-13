@@ -28,15 +28,9 @@ dito
 doon
 gagawin
 gayunman
-ginagawa
-ginawa
-ginawang
-gumawa
 gusto
 habang
 hanggang
-hindi
-huwag
 iba
 ibaba
 ibabaw
