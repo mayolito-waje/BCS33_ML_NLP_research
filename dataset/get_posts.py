@@ -29,8 +29,8 @@ posts_dataset = set(
 
 # to handle pagination
 start_url = ''
-# with open('start_url.txt', 'r', encoding='utf-8') as f:
-#     start_url = f.read()
+with open('start_url.txt', 'r', encoding='utf-8') as f:
+    start_url = f.read()
 
 
 def handle_pagination_url(url):
@@ -45,8 +45,8 @@ while True:
         for post in get_posts(freedom_wall_id, timeout=60, pages=10000,
                               start_url=start_url, request_url_callback=handle_pagination_url, options={"posts_per_page": 150}):
             fetched_posts_count += 1
-            # with open('start_url.txt', 'w', encoding='utf-8') as f:
-            #     f.write(start_url)
+            with open('start_url.txt', 'w', encoding='utf-8') as f:
+                f.write(start_url)
 
             date = post['time']
             text = post['post_text']
@@ -83,9 +83,9 @@ while True:
         print(
             f'Temporarily banned, sleeping for {sleep_secs / 60} m ({sleep_secs} secs)')
 
-        # with open('start_url.txt', 'w', encoding='utf-8') as f:
-        #     f.write(start_url)
-        #     print(f'Updated start url: {start_url}')
+        with open('start_url.txt', 'w', encoding='utf-8') as f:
+            f.write(start_url)
+            print(f'Updated start url: {start_url}')
 
         clean_csv()
         count_rows()
