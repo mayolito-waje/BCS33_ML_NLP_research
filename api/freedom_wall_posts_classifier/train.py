@@ -50,7 +50,7 @@ def train():
     freqs = build_frequencies(train_x, train_y)
     print('\nTotal length of frequencies dictionary:', len(freqs))
 
-    with open(fd + '/frequencies.pkl', 'wb') as f:
+    with open(fd + '/data/frequencies.pkl', 'wb') as f:
         pickle.dump(freqs, f)  # serialize the frequency dictionary
 
     # Feature extraction
@@ -66,7 +66,7 @@ def train():
     print(
         f'Post-training parameters or weights: {[round(t, 8) for t in np.squeeze(theta)]}')
 
-    with open(fd + '/params.pkl', 'wb') as f:
+    with open(fd + '/data/params.pkl', 'wb') as f:
         pickle.dump(theta, f)  # Serialize the parameters
 
     test_model(test_x, test_y)

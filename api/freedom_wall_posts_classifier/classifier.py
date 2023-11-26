@@ -12,9 +12,9 @@ def predict_post(post_text):
     '''
     fd = os.path.realpath(os.path.dirname(__file__))
 
-    with open(fd + '/frequencies.pkl', 'rb') as f:
+    with open(fd + '/data/frequencies.pkl', 'rb') as f:
         freqs = pickle.load(f)
-    with open(fd + '/params.pkl', 'rb') as f:
+    with open(fd + '/data/params.pkl', 'rb') as f:
         theta = pickle.load(f)
 
     x = extract_features(post_text, freqs)
