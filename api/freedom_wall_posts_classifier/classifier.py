@@ -1,8 +1,8 @@
 import os
 import numpy as np
 import pickle
-from preprocess.extract_features import extract_features
-from operations import sigmoid
+from freedom_wall_posts_classifier.preprocess.extract_features import extract_features
+from freedom_wall_posts_classifier.operations import sigmoid
 
 
 def predict_post(post_text):

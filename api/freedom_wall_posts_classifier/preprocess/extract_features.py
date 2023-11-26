@@ -1,5 +1,5 @@
 import numpy as np
-from preprocess.process_text import process_text
+from freedom_wall_posts_classifier.preprocess.process_text import process_text
 
 
 def extract_features(text, freqs):

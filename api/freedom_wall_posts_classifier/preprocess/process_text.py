@@ -4,8 +4,8 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
 from nltk.corpus import stopwords
 import enchant
-from preprocess.TagalogStemmerPython.TglStemmer import stem_word as stem_filipino
-from preprocess.tl_stopwords import TL_STOP_WORDS as tl_stopwords
+from freedom_wall_posts_classifier.preprocess.TagalogStemmerPython.TglStemmer import stem_word as stem_filipino
+from freedom_wall_posts_classifier.preprocess.tl_stopwords import TL_STOP_WORDS as tl_stopwords
 
 
 def process_text(text):
