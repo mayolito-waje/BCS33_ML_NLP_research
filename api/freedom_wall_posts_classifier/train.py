@@ -1,5 +1,7 @@
+import sys
 import numpy as np
 import pandas as pd
+import nltk
 import pickle
 import os
 from preprocess.build_frequencies import build_frequencies
@@ -9,6 +11,8 @@ from test_logistic_regression import test_model
 
 
 def train():
+    nltk.download('stopwords')  # download stopwords if it does not exist
+
     fd = os.path.realpath(os.path.dirname(__file__))
 
     # Extracting DataFrame
@@ -18,14 +22,6 @@ def train():
 
     print('Related DLSU-D posts length:', len(related))
     print('Non DLSU-D related posts length:', len(non_related))
-
-    print('\nDLSU-D related posts examples:')
-    for i in range(3):
-        print(f'\t{i + 1}. {related[i][:200]}...')
-
-    print('\nNon DLSU-D related posts examples:')
-    for j in range(3):
-        print(f'\t{j + 1}. {non_related[j][:200]}...')
 
     # Separate training and test data
     related_training_count = int(len(related) * 0.8)
@@ -48,7 +44,7 @@ def train():
 
     # Building frequency dictionary
     freqs = build_frequencies(train_x, train_y)
-    print('\nTotal length of frequencies dictionary:', len(freqs))
+    print('\nExtracted frequency dictionary. Total length of frequency dictionary:', len(freqs))
 
     with open(fd + '/data/frequencies.pkl', 'wb') as f:
         pickle.dump(freqs, f)  # serialize the frequency dictionary
@@ -56,9 +52,11 @@ def train():
     # Feature extraction
     X = np.zeros((len(train_x), 3))
     for i in range(len(train_x)):
+        sys.stdout.write(f'\rExtracting feature [{i + 1}/{len(train_x)}]...')
         X[i, :] = extract_features(train_x[i], freqs)
 
     Y = train_y
+    print(f'\nExtracted features (total features: {len(X)})')
 
     # Gradient descent
     J, theta = gradient_descent(X, Y, np.zeros((3, 1)), 1e-5, 10000)

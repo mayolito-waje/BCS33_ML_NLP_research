@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 from freedom_wall_posts_classifier.preprocess.process_text import process_text
 
@@ -14,10 +15,17 @@ def build_frequencies(texts, ys):
     textslist = np.squeeze(texts).tolist()
     labels = np.squeeze(ys).tolist()
 
+    i = 1
+
     freqs = {}
     for label, text in zip(labels, textslist):
+        sys.stdout.write(
+            f'\rExtracting frequency dictionary [{i}/{len(labels)}]...')
+
         for word in process_text(text):
             key = (word, label)
             freqs[key] = freqs.get(key, 0) + 1
+
+        i += 1
 
     return freqs
