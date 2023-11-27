@@ -21,4 +21,4 @@ def predict_post(post_text):
     z = np.dot(x, theta)
     y_pred = sigmoid(z)
 
-    return y_pred
+    return x, theta, y_pred
