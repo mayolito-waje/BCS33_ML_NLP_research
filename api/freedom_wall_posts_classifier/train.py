@@ -42,6 +42,15 @@ def train():
     print('\nTraining data length:', len(train_x))
     print('Test data length:', len(test_x))
 
+    # Post examples
+    print('\nDLSU-D related posts examples:')
+    for i in range(3):
+        print(f'\t{i + 1}. {related[i][:100]}...')
+
+    print('\nNon DLSU-D related posts examples:')
+    for j in range(3):
+        print(f'\t{j + 1}. {non_related[j][:100]}...')
+
     # Building frequency dictionary
     freqs = build_frequencies(train_x, train_y)
     print('\nExtracted frequency dictionary. Total length of frequency dictionary:', len(freqs))
@@ -59,8 +68,8 @@ def train():
     print(f'\nExtracted features (total features: {len(X)})')
 
     # Gradient descent
-    J, theta = gradient_descent(X, Y, np.zeros((3, 1)), 1e-5, 10000)
-    print(f'Post-training cost: {J}')
+    J, theta = gradient_descent(X, Y, np.zeros((3, 1)), 1e-5, 500000)
+    print(f'\nPost-training cost: {J}')
     print(
         f'Post-training parameters or weights: {[round(t, 8) for t in np.squeeze(theta)]}')
 

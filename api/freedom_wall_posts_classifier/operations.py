@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 
 
@@ -22,6 +23,7 @@ def gradient_descent(x, y, theta, alpha, iter_count):
     m = np.shape(x)[0]
 
     for i in range(0, iter_count):
+        sys.stdout.write(f'\rFinding optimal parameters [{i+1}/{iter_count}]...')
         z = np.dot(x, theta)
         h = sigmoid(z)
 

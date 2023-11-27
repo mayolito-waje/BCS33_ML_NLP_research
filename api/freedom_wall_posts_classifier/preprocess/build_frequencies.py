@@ -15,9 +15,9 @@ def build_frequencies(texts, ys):
     textslist = np.squeeze(texts).tolist()
     labels = np.squeeze(ys).tolist()
 
-    i = 1
-
     freqs = {}
+
+    i = 1
     for label, text in zip(labels, textslist):
         sys.stdout.write(
             f'\rExtracting frequency dictionary [{i}/{len(labels)}]...')
