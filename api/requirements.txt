@@ -4,6 +4,7 @@ click==8.1.7
 exceptiongroup==1.2.0
 fastapi==0.104.1
 -e git+https://github.com/mayolito-waje/BCS33_ML_NLP_research.git@21e7e5a06b1b69f677a9410fab6e28f5bbcb7d3e#egg=freedom_wall_posts_classifier&subdirectory=api
+h11==0.14.0
 idna==3.6
 joblib==1.3.2
 nltk==3.8.1
@@ -24,3 +25,4 @@ threadpoolctl==3.2.0
 tqdm==4.66.1
 typing_extensions==4.8.0
 tzdata==2023.3
+uvicorn==0.24.0.post1
