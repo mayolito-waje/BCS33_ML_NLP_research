@@ -4,6 +4,7 @@ import pickle
 from typing import Optional
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from freedom_wall_posts_classifier.classifier import predict_post
 
@@ -23,19 +24,21 @@ class Request(BaseModel):
 
 app = FastAPI()
 
+app.add_middleware(CORSMiddleware, allow_origins=['*'])
+
 
 @app.get('/model/')
-async def test_model(request: Request):
-    feature, params, score = predict_post(request.post)
+async def test_model(post: str, extended: bool = False):
+    feature, params, score = predict_post(post)
     score = score[0][0]
     pred_label = set_label(score)
     report = dict()
 
-    report['post'] = request.post
+    report['post'] = post
     report['score'] = score
     report['predicted_label'] = pred_label
 
-    if (request.extended == True):
+    if (extended == True):
         fd = os.path.realpath(os.path.dirname(__file__))
 
         with open(fd + '/../freedom_wall_posts_classifier/data/accuracy_report.pkl', 'rb') as f:
