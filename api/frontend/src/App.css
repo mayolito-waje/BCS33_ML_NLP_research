@@ -1,6 +1,44 @@
-/* #root {
+#root {
+  font-family: 'Source Code Pro', monospace;
+  color: whitesmoke;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-} */
+}
+
+label[for='post'] {
+  font-size: 24px;
+}
+
+.report {
+  border: whitesmoke 1px solid;
+  border-radius: 25px;
+  padding: 15px;
+  margin: 15px;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Source Code Pro', monospace;
+  background: transparent;
+  border-color: whitesmoke;
+  border-radius: 10px;
+  height: 50px;
+  width: 150px;
+  font-size: 15px;
+  color: whitesmoke;
+}
+
+textarea {
+  background-color: transparent;
+  border-color: whitesmoke;
+  color: whitesmoke;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}

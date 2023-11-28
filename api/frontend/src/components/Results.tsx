@@ -8,69 +8,95 @@ function Report(props: ReportProps) {
   const result = props.result;
 
   return (
-    <div>
-      <div>Post: {result.post}</div>
-      <div>Score: {result.score.toFixed(2)}</div>
-      <div>Predicted Label: {result.predicted_label}</div>
-      {result.feature ? (
+    <div className="report">
+      <h2>Report</h2>
+      <div>
         <div>
-          Features:{' [ '}
-          {result.feature.map((e) => (
-            <span>{e}, </span>
-          ))}
-          {' ]'}
+          <strong>Post:</strong>
         </div>
-      ) : null}
-      {result.model_classification_report ? (
+        <div>{result.post}</div>
+        <br />
         <div>
-          <div>Post Model Training Classification Report</div>
+          <strong>Score:</strong> {result.score.toFixed(2)}
+        </div>
+        <div>
+          <strong>Predicted Label:</strong> {result.predicted_label}
+        </div>
+        {result.feature ? (
           <div>
-            Parameters:{' [ '}
-            {result.model_classification_report?.parameters.map((e) => (
-              <span>{e.toFixed(4)}, </span>
+            <strong>Features:</strong>
+            {' [ '}
+            {result.feature.map((e) => (
+              <span key={'feature-' + e}>{e}, </span>
             ))}
             {' ]'}
           </div>
+        ) : null}
+        {result.model_classification_report ? (
           <div>
-            Accuracy Score:{' '}
-            {result.model_classification_report?.accuracy_score.toFixed(2)}
+            <h3>Post Model Training Classification Report:</h3>
+            <div>
+              <strong>Post Training Parameters Result:</strong>
+              {' [ '}
+              {result.model_classification_report?.parameters.map((e) => (
+                <span key={'cr-param-' + e}>{e.toFixed(4)}, </span>
+              ))}
+              {' ]'}
+            </div>
+            <div>
+              <strong>Accuracy Score:</strong>{' '}
+              {result.model_classification_report?.accuracy_score.toFixed(2)}
+            </div>
+            <div>
+              <strong>Precision Score:</strong>{' '}
+              {result.model_classification_report?.precision_score.toFixed(2)}
+            </div>
+            <div>
+              <strong>Recall Score:</strong>{' '}
+              {result.model_classification_report?.recall_score.toFixed(2)}
+            </div>
+            <div>
+              <strong>F1 Score:</strong>{' '}
+              {result.model_classification_report?.f1_score.toFixed(2)}
+            </div>
+            <div>
+              <strong>Confusion Matrix:</strong>{' '}
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td className="tg-0lax">
+                      {
+                        result.model_classification_report
+                          .confusion_matrix[0][0]
+                      }
+                    </td>
+                    <td className="tg-0lax">
+                      {
+                        result.model_classification_report
+                          .confusion_matrix[0][1]
+                      }
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="tg-0lax">
+                      {
+                        result.model_classification_report
+                          .confusion_matrix[1][0]
+                      }
+                    </td>
+                    <td className="tg-0lax">
+                      {
+                        result.model_classification_report
+                          .confusion_matrix[1][1]
+                      }
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div>
-            Precision Score:{' '}
-            {result.model_classification_report?.precision_score.toFixed(2)}
-          </div>
-          <div>
-            Recall Score:{' '}
-            {result.model_classification_report?.recall_score.toFixed(2)}
-          </div>
-          <div>
-            F1 Score: {result.model_classification_report?.f1_score.toFixed(2)}
-          </div>
-          <div>
-            Confusion Matrix:{' '}
-            <table className="tg">
-              <tbody>
-                <tr>
-                  <td className="tg-0lax">
-                    {result.model_classification_report.confusion_matrix[0][0]}
-                  </td>
-                  <td className="tg-0lax">
-                    {result.model_classification_report.confusion_matrix[0][1]}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="tg-0lax">
-                    {result.model_classification_report.confusion_matrix[1][0]}
-                  </td>
-                  <td className="tg-0lax">
-                    {result.model_classification_report.confusion_matrix[1][1]}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 }

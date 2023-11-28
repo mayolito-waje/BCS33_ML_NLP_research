@@ -9,12 +9,18 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
   return (
     <div>
       <label htmlFor="post">Post:</label>
+      <br />
       <textarea
+        cols={100}
+        rows={10}
         name="post"
         onChange={({ target }) => {
           setPost(target.value);
         }}
+        placeholder="Write anything you feel like writing. The text can be in Tagalog, English, or Taglish."
       ></textarea>
+      <br />
+      <br />
       <input
         type="checkbox"
         name="extended"
@@ -22,7 +28,9 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
           setExtended(!extended);
         }}
       />
-      <label htmlFor="extended"></label>
+      <label htmlFor="extended">Extended details</label>
+      <br />
+      <br />
       <button
         onClick={() => {
           fetchResult({ post, extended });
