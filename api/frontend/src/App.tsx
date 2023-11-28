@@ -19,7 +19,7 @@ function App() {
   }, [result]);
 
   async function handleFetchResult(requestBody: Request) {
-    const fetchedResult = await axios.get('/api/model', {
+    const fetchedResult = await axios.get('/model/', {
       params: {
         post: requestBody.post,
         extended: requestBody.extended,

@@ -5,6 +5,7 @@ from typing import Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from freedom_wall_posts_classifier.classifier import predict_post
 
@@ -25,7 +26,6 @@ class Request(BaseModel):
 app = FastAPI()
 
 app.add_middleware(CORSMiddleware, allow_origins=['*'])
-
 
 @app.get('/model/')
 async def test_model(post: str, extended: bool = False):
@@ -59,6 +59,4 @@ async def test_model(post: str, extended: bool = False):
     return report
 
 
-@app.get('/')
-async def root():
-    return {'message': 'Welcome to DLSU-D Freedom Wall Posts Classifier'}
+app.mount('/', StaticFiles(directory='dist', html=True), name='dist')
