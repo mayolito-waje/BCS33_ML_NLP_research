@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-label[for='post'] {
+label.post {
   font-size: 24px;
 }
 

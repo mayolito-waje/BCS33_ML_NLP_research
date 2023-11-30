@@ -8,27 +8,31 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
 
   return (
     <div>
-      <label htmlFor="post">Post:</label>
+      <label className="post">
+        Post:
+        <br />
+        <textarea
+          cols={100}
+          rows={10}
+          name="post"
+          onChange={({ target }) => {
+            setPost(target.value);
+          }}
+          placeholder="Write anything you feel like writing. The text can be in Tagalog, English, or Taglish."
+        ></textarea>
+      </label>
       <br />
-      <textarea
-        cols={100}
-        rows={10}
-        name="post"
-        onChange={({ target }) => {
-          setPost(target.value);
-        }}
-        placeholder="Write anything you feel like writing. The text can be in Tagalog, English, or Taglish."
-      ></textarea>
       <br />
-      <br />
-      <input
-        type="checkbox"
-        name="extended"
-        onChange={() => {
-          setExtended(!extended);
-        }}
-      />
-      <label htmlFor="extended">Extended details</label>
+      <label>
+        <input
+          type="checkbox"
+          name="extended"
+          onChange={() => {
+            setExtended(!extended);
+          }}
+        />
+        Extended details
+      </label>
       <br />
       <br />
       <button

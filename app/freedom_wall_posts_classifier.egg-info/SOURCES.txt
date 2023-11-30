@@ -1,6 +1,4 @@
 setup.py
-app/__init__.py
-app/main.py
 freedom_wall_posts_classifier/__init__.py
 freedom_wall_posts_classifier/classifier.py
 freedom_wall_posts_classifier/operations.py
