@@ -3,7 +3,7 @@ anyio==3.7.1
 click==8.1.7
 exceptiongroup==1.2.0
 fastapi==0.104.1
--e git+ssh://git@github.com/mayolito-waje/BCS33_ML_NLP_research.git@63cd6ada5fb5cf9a1f0ffbc74724ba221c258ae7#egg=freedom_wall_posts_classifier&subdirectory=app
+# -e git+https://github.com/mayolito-waje/BCS33_ML_NLP_research.git@63cd6ada5fb5cf9a1f0ffbc74724ba221c258ae7#egg=freedom_wall_posts_classifier&subdirectory=app
 h11==0.14.0
 idna==3.6
 joblib==1.3.2

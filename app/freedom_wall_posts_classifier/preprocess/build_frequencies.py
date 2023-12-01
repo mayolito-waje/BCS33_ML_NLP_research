@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-from freedom_wall_posts_classifier.preprocess.process_text import process_text
+from .process_text import process_text
 
 
 def build_frequencies(texts, ys):

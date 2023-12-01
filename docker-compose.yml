@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  app:
+    image: dlsud-fw-classifier
+    build: ./app
+    ports:
+      - 80:80
