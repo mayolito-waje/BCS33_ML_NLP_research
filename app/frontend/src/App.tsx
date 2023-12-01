@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import './App.css';
 import Input from './components/Input';
 import Report from './components/Results';
+import fetch from './fetch/fetchData';
 import { Result, Request } from './types/types';
+import Footer from './components/Footer';
 
 function App() {
   const [result, setResult] = useState<Result>();
@@ -19,45 +20,31 @@ function App() {
   }, [result]);
 
   async function handleFetchResult(requestBody: Request) {
-    const fetchedResult = await axios.get('/model/', {
-      params: {
-        post: requestBody.post,
-        extended: requestBody.extended,
-      },
-    });
+    const fetchedResult = await fetch(requestBody);
 
-    setResult(fetchedResult.data);
+    setResult(fetchedResult);
     setShowReport(true);
   }
 
   return (
     <div className="main">
       <img src="/ai-classifier.png" id="logo"></img>
+      <p>In this website, the AIClassifier shall classify the post if it’s:</p>
+      <ul>
+        <li>- relevant to DLSU-D in context [referred to as 1]</li>
+        <li>- non-relevant to DLSU-D in context [referred to as 0]</li>
+      </ul>
       <p>
-        This API (Application Programming Interface) detects if the given post
-        has relevancy concerning the system and organization within De La Salle
-        University - Dasmarinas. The model was trained using unofficial DLSU-D
-        Freedom Wall Facebook page posts. Some relevant post examples includes
-        criticism on school system, experiences as students of DLSU-D, school
-        events concerns and verdicts, questions that is connected to university,
-        research surverys, etc. If the predicted label is 1, then the model
-        classified the post as relevant and 0 if it is not.
+        Relevant post examples includes: school criticism, inquiries, questions
+        about university's system, thoughts about school events, etc.
       </p>
-      <Input fetchResult={handleFetchResult}></Input>
+
+      <Input fetchResult={handleFetchResult} />
       <br />
-      {showReport ? <Report result={result as Result}></Report> : null}
-      <footer>
-        <a
-          className="feedback"
-          target="_blank"
-          href="https://forms.gle/8htrbxqMTW3k3swn9"
-        >
-          Click here to write feedback
-        </a>
-        <br />
-        <br />
-        Researchers: Mayolito Waje, Matthew Lumugdang, Avin Robles
-      </footer>
+
+      {showReport ? <Report result={result as Result} /> : null}
+
+      <Footer />
     </div>
   );
 }

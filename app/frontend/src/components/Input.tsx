@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import type { InferProps } from 'prop-types';
+import generatePost from '../samplePosts';
 
 function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
   const [post, setPost] = useState('');
@@ -9,9 +10,20 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
   return (
     <div>
       <label className="post">
-        Post:
+        Write post below:
+        <br />
+        <br />
+        <button
+          onClick={() => {
+            setPost(generatePost(post));
+          }}
+        >
+          Generate example post
+        </button>
+        <br />
         <br />
         <textarea
+          value={post}
           rows={10}
           name="post"
           onChange={({ target }) => {
@@ -26,11 +38,11 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
         <input
           type="checkbox"
           name="extended"
-          onChange={() => {
-            setExtended(!extended);
+          onChange={({ target }) => {
+            setExtended(target.checked);
           }}
         />
-        Extended details
+        Show extra details
       </label>
       <br />
       <br />

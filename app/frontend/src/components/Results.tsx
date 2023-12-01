@@ -4,61 +4,72 @@ interface ReportProps {
   result: Result;
 }
 
+function toPercent(num: number) {
+  num = num * 100;
+  return num.toFixed(2) + '%';
+}
+
 function Report(props: ReportProps) {
   const result = props.result;
 
   return (
     <div className="report">
       <h2>Report</h2>
-      <div>
-        <div>
-          <strong>Post:</strong>
-        </div>
-        <div>{result.post}</div>
-        <br />
-        <div>
-          <strong>Score:</strong> {result.score.toFixed(2)}
-        </div>
-        <div>
-          <strong>Predicted Label:</strong>{' '}
-          {result.predicted_label === 1 ? 'relevant (1)' : 'non-relevant (0)'}
-        </div>
-        {result.feature ? (
+      <div className="report_data">
+        <div className="main_report">
           <div>
-            <strong>Features:</strong>
-            {' [ '}
-            {result.feature.map((e) => (
-              <span key={'feature-' + e}>{e}, </span>
-            ))}
-            {' ]'}
+            <strong>Post:</strong>
           </div>
-        ) : null}
-        {result.model_classification_report ? (
+          <div>{result.post}</div>
+          <br />
           <div>
-            <h3>Post Model Training Classification Report:</h3>
+            <strong>Score:</strong> {result.score.toFixed(2)}
+          </div>
+          <div>
+            <strong>Predicted Label:</strong>{' '}
+            {result.predicted_label === 1 ? 'relevant (1)' : 'non-relevant (0)'}
+          </div>
+          {result.feature ? (
             <div>
-              <strong>Post Training Parameters Result:</strong>
+              <strong>Vectorized form of post text (feature):</strong>
+              {' [ '}
+              {result.feature.map((e) => (
+                <span key={'feature-' + e}>{e}, </span>
+              ))}
+              {' ]'}
+            </div>
+          ) : null}
+          {result.model_classification_report?.parameters ? (
+            <div>
+              <strong>Parameters used to classify feature:</strong>
               {' [ '}
               {result.model_classification_report?.parameters.map((e) => (
                 <span key={'cr-param-' + e}>{e.toFixed(4)}, </span>
               ))}
               {' ]'}
             </div>
+          ) : null}
+        </div>
+        {result.model_classification_report ? (
+          <div className="classification_report">
+            <h4>
+              The model used to classify the post has the following accuracy:
+            </h4>
             <div>
               <strong>Accuracy Score:</strong>{' '}
-              {result.model_classification_report?.accuracy_score.toFixed(2)}
+              {toPercent(result.model_classification_report?.accuracy_score)}
             </div>
             <div>
               <strong>Precision Score:</strong>{' '}
-              {result.model_classification_report?.precision_score.toFixed(2)}
+              {toPercent(result.model_classification_report?.precision_score)}
             </div>
             <div>
               <strong>Recall Score:</strong>{' '}
-              {result.model_classification_report?.recall_score.toFixed(2)}
+              {toPercent(result.model_classification_report?.recall_score)}
             </div>
             <div>
               <strong>F1 Score:</strong>{' '}
-              {result.model_classification_report?.f1_score.toFixed(2)}
+              {toPercent(result.model_classification_report?.f1_score)}
             </div>
             <div>
               <strong>Confusion Matrix:</strong>{' '}
