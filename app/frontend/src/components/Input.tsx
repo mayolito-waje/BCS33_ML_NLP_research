@@ -12,7 +12,6 @@ function Input({ fetchResult }: InferProps<typeof Input.propTypes>) {
         Post:
         <br />
         <textarea
-          cols={100}
           rows={10}
           name="post"
           onChange={({ target }) => {

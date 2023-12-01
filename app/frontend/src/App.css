@@ -7,6 +7,25 @@
   text-align: center;
 }
 
+.feedback {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.feedback:hover {
+  text-decoration: underline;
+}
+
+#logo {
+  width: 75%;
+  max-width: 500px;
+}
+
+.post textarea {
+  width: 80%;
+}
+
 label.post {
   font-size: 24px;
 }

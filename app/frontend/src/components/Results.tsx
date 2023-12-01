@@ -20,7 +20,8 @@ function Report(props: ReportProps) {
           <strong>Score:</strong> {result.score.toFixed(2)}
         </div>
         <div>
-          <strong>Predicted Label:</strong> {result.predicted_label}
+          <strong>Predicted Label:</strong>{' '}
+          {result.predicted_label === 1 ? 'relevant (1)' : 'non-relevant (0)'}
         </div>
         {result.feature ? (
           <div>
