@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Input from './components/Input';
-import Report from './components/Results';
 import fetch from './fetch/fetchData';
 import { Result, Request } from './types/types';
+import Wallpaper from './components/Wallpaper';
+import Input from './components/Input';
+import Report from './components/Results';
 import Footer from './components/Footer';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="main">
+      <Wallpaper />
       <img src="/ai-classifier.png" id="logo"></img>
       <p>In this website, the AIClassifier shall classify the post if it’s:</p>
       <ul>

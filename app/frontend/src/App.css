@@ -1,10 +1,12 @@
-#root {
+:root {
   font-family: 'Source Code Pro', monospace;
   color: whitesmoke;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --border: #0c200d 3px solid;
+  --bg: rgb(40, 66, 40);
 }
 
 .feedback {
@@ -17,6 +19,11 @@
   text-decoration: underline;
 }
 
+#tsparticles {
+  position: relative;
+  z-index: -1;
+}
+
 #logo {
   width: 75%;
   max-width: 500px;
@@ -24,6 +31,7 @@
 
 .post textarea {
   width: 80%;
+  background-color: var(--bg);
 }
 
 label.post {
@@ -31,7 +39,8 @@ label.post {
 }
 
 .report {
-  border: whitesmoke 1px solid;
+  border: var(--border);
+  background: var(--bg);
   border-radius: 25px;
   padding: 15px;
   margin: 15px;
@@ -40,9 +49,9 @@ label.post {
 button {
   cursor: pointer;
   font-family: 'Source Code Pro', monospace;
-  background: transparent;
-  border-color: whitesmoke;
-  border-radius: 10px;
+  background: rgb(63, 124, 63);
+  border: var(--border);
+  border-radius: 25px;
   height: 50px;
   width: 150px;
   font-size: 15px;
@@ -50,8 +59,9 @@ button {
 }
 
 textarea {
-  background-color: transparent;
-  border-color: whitesmoke;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: 15px;
   color: whitesmoke;
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
@@ -69,10 +79,12 @@ textarea {
 }
 
 .classification_report {
-  border: whitesmoke 1px solid;
+  border: var(--border);
   border-radius: 15px;
   width: fit-content;
   margin: auto;
+  background: rgb(184, 181, 181);
+  color: var(--bg);
 }
 
 ul {
