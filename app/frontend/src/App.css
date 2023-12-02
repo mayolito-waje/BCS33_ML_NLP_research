@@ -72,6 +72,10 @@ ul {
   gap: 25px;
 }
 
+.main_report {
+  max-width: 70%;
+}
+
 .classification_report {
   border: var(--border);
   border-radius: 15px;
@@ -94,5 +98,6 @@ ul {
 @media screen and (max-width: 720px) {
   .report_data {
     flex-flow: column;
+    align-items: center;
   }
 }
