@@ -9,16 +9,6 @@
   --bg: rgb(40, 66, 40);
 }
 
-.feedback {
-  color: whitesmoke;
-  text-decoration: none;
-  font-size: 25px;
-}
-
-.feedback:hover {
-  text-decoration: underline;
-}
-
 #tsparticles {
   position: relative;
   z-index: -1;
@@ -29,21 +19,8 @@
   max-width: 500px;
 }
 
-.post textarea {
-  width: 80%;
-  background-color: var(--bg);
-}
-
 label.post {
   font-size: 24px;
-}
-
-.report {
-  border: var(--border);
-  background: var(--bg);
-  border-radius: 25px;
-  padding: 15px;
-  margin: 15px;
 }
 
 button {
@@ -67,6 +44,23 @@ textarea {
   font-size: 15px;
 }
 
+ul {
+  list-style: none;
+}
+
+.post textarea {
+  width: 80%;
+  background-color: var(--bg);
+}
+
+.report {
+  border: var(--border);
+  background: var(--bg);
+  border-radius: 25px;
+  padding: 15px;
+  margin: 15px;
+}
+
 .table {
   margin-left: auto;
   margin-right: auto;
@@ -87,6 +81,18 @@ textarea {
   color: var(--bg);
 }
 
-ul {
-  list-style: none;
+.feedback {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.feedback:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 720px) {
+  .report_data {
+    flex-flow: column;
+  }
 }
