@@ -3,6 +3,7 @@ import './App.css';
 import fetch from './fetch/fetchData';
 import { Result, Request } from './types/types';
 import Wallpaper from './components/Wallpaper';
+import Information from './components/Information';
 import Input from './components/Input';
 import Report from './components/Results';
 import Footer from './components/Footer';
@@ -10,6 +11,7 @@ import Footer from './components/Footer';
 function App() {
   const [result, setResult] = useState<Result>();
   const [showReport, setShowReport] = useState<boolean>(false);
+  const [showGuide, setShowGuide] = useState<boolean>(false);
 
   useEffect(() => {
     // scroll to bottom page when results are fetched
@@ -31,15 +33,21 @@ function App() {
     <div className="main">
       <Wallpaper />
       <img src="/ai-classifier.png" id="logo"></img>
-      <p>In this website, the AIClassifier shall classify the post if it’s:</p>
-      <ul>
-        <li>- relevant to DLSU-D in context [referred to as 1]</li>
-        <li>- non-relevant to DLSU-D in context [referred to as 0]</li>
-      </ul>
-      <p>
-        Relevant post examples includes: school criticism, inquiries, questions
-        about university's system, thoughts about school events, etc.
-      </p>
+      {showGuide ? (
+        <Information
+          closeWindow={() => {
+            setShowGuide(false);
+          }}
+        />
+      ) : null}
+      <h2
+        className="guide_button"
+        onClick={() => {
+          setShowGuide(true);
+        }}
+      >
+        How does it work?
+      </h2>
 
       <Input fetchResult={handleFetchResult} />
       <br />

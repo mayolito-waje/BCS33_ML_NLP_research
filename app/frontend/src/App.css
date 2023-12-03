@@ -48,6 +48,35 @@ ul {
   list-style: none;
 }
 
+.guide_button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.information {
+  position: fixed;
+  background-color: whitesmoke;
+  color: black;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  max-width: 1020px;
+  padding: 20px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.close_information {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  font-weight: bold;
+  font-size: 25px;
+  color: gray;
+}
+
 .post textarea {
   width: 80%;
   background-color: var(--bg);
