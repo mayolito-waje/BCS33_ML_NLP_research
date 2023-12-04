@@ -1,4 +1,5 @@
 import { Result } from '../types/types';
+import { nanoid } from 'nanoid';
 
 interface ReportProps {
   result: Result;
@@ -34,7 +35,7 @@ function Report(props: ReportProps) {
               <strong>Vectorized form of post text (feature):</strong>
               {' [ '}
               {result.feature.map((e) => (
-                <span key={'feature-' + e}>{e}, </span>
+                <span key={nanoid()}>{e}, </span>
               ))}
               {' ]'}
             </div>
@@ -44,7 +45,7 @@ function Report(props: ReportProps) {
               <strong>Parameters used to classify feature:</strong>
               {' [ '}
               {result.model_classification_report?.parameters.map((e) => (
-                <span key={'cr-param-' + e}>{e.toFixed(4)}, </span>
+                <span key={nanoid()}>{e.toFixed(4)}, </span>
               ))}
               {' ]'}
             </div>
