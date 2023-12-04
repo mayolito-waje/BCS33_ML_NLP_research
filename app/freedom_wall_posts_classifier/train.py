@@ -6,8 +6,8 @@ import pickle
 import os
 from preprocess.build_frequencies import build_frequencies
 from preprocess.extract_features import extract_features
-from operations import gradient_descent
-from test_logistic_regression import test_model
+from freedom_wall_posts_classifier.operations import gradient_descent
+from freedom_wall_posts_classifier.test_logistic_regression import test_model
 
 
 def train():

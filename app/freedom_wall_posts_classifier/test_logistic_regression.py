@@ -1,8 +1,9 @@
 import sys
 import os
+import numpy as np
 import pickle
-from classifier import predict_post
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report, confusion_matrix
+from freedom_wall_posts_classifier.classifier import predict_post
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 
 def test_model(test_x, test_y):
@@ -12,7 +13,7 @@ def test_model(test_x, test_y):
     for post in test_x:
         sys.stdout.write(f'\rTesting model [{i}/{len(test_x)}]...')
 
-        y_hat = predict_post(post)
+        y_hat = predict_post(post)[2]
 
         if y_hat > 0.5:
             pred_y.append(1.0)

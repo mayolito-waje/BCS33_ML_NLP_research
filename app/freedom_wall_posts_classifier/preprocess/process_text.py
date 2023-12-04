@@ -19,15 +19,23 @@ def process_text(text):
     tokenizer = TweetTokenizer(
         preserve_case=False, reduce_len=True, strip_handles=True)
 
-    text = re.sub(r'\b([0-9]*)\b', '', text)  # Remove numbers
+    # Remove numbers
+    text = re.sub(r'\b([0-9]*)\b', '', text)
+    # Remove links
+    text = re.sub(
+        r'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', '', text)
 
     text_stems = set()
 
     text_tokens = tokenizer.tokenize(text)
     for token in text_tokens:
         if token not in string.punctuation and token not in eng_stopwords and token not in tl_stopwords:
-            text_stems.add(stemmer.stem(token))
+            en_stemmed = stemmer.stem(token)
+            if en_stemmed:
+                text_stems.add(en_stemmed)
             if not en_dict.check(token):
-                text_stems.add(stem_filipino(token))
+                tl_stemmed = stem_filipino(token)
+                if tl_stemmed:
+                    text_stems.add(tl_stemmed)
 
     return list(text_stems)
